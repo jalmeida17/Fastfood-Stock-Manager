@@ -1,0 +1,6 @@
+@LEARNING_.NET_API_ANGULAR_HostAddress = http://localhost:5062
+
+GET {{LEARNING_.NET_API_ANGULAR_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
