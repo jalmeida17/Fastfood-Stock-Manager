@@ -1,4 +1,4 @@
-# LEARNING-.NET-API-ANGULAR
+# Fastfood Stock Managar
 
 Repo d'apprentisage ou je fais une API .NET qui se connecte a une interface Angular
 
