@@ -1,11 +1,5 @@
 C:\Dev\LEARNING-.NET-API-ANGULAR\bin\Debug\net8.0\appsettings.Development.json
 C:\Dev\LEARNING-.NET-API-ANGULAR\bin\Debug\net8.0\appsettings.json
-C:\Dev\LEARNING-.NET-API-ANGULAR\bin\Debug\net8.0\Web-Angular\angular.json
-C:\Dev\LEARNING-.NET-API-ANGULAR\bin\Debug\net8.0\Web-Angular\package-lock.json
-C:\Dev\LEARNING-.NET-API-ANGULAR\bin\Debug\net8.0\Web-Angular\package.json
-C:\Dev\LEARNING-.NET-API-ANGULAR\bin\Debug\net8.0\Web-Angular\tsconfig.app.json
-C:\Dev\LEARNING-.NET-API-ANGULAR\bin\Debug\net8.0\Web-Angular\tsconfig.json
-C:\Dev\LEARNING-.NET-API-ANGULAR\bin\Debug\net8.0\Web-Angular\tsconfig.spec.json
 C:\Dev\LEARNING-.NET-API-ANGULAR\bin\Debug\net8.0\LEARNING-.NET-API-ANGULAR.exe
 C:\Dev\LEARNING-.NET-API-ANGULAR\bin\Debug\net8.0\LEARNING-.NET-API-ANGULAR.deps.json
 C:\Dev\LEARNING-.NET-API-ANGULAR\bin\Debug\net8.0\LEARNING-.NET-API-ANGULAR.runtimeconfig.json
