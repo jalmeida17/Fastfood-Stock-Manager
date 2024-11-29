@@ -1,0 +1,63 @@
+<div class="col-8 p-fluid restaurantsDiv" style="height:100%;">
+    <p-table [value]="restaurants" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Bread</th>
+                <th>Cheese</th>
+                <th>Meat</th>
+                <th>Potato</th>
+                <th>Water</th>
+                <th>Coke</th>
+                <th style="width: 5rem">Restock</th>
+                <th style="width: 5rem">Edit</th>
+                <th style="width: 5rem">Delete</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-stock>
+            <tr>
+                <td>{{ stock.id }}</td>
+                <td>{{ stock.name }}</td>
+                <td>{{ stock.location }}</td>
+                <td>{{ stock.bread }}</td>
+                <td>{{ stock.cheese }}</td>
+                <td>{{ stock.meat }}</td>
+                <td>{{ stock.potato }}</td>
+                <td>{{ stock.water }}</td>
+                <td>{{ stock.coke }}</td>
+                <td>
+                    <button 
+                        type="button" 
+                        pButton 
+                        pRipple 
+                        icon="pi pi-sync" 
+                        class="p-button-success"
+                        (click)="restockRestaurant()">
+                    </button>
+                </td>
+                <td>
+                    <button 
+                        type="button" 
+                        pButton 
+                        pRipple 
+                        icon="pi pi-pencil" 
+                        class="p-button-primary"
+                        (click)="editRestaurant()">
+                    </button>
+                </td>
+                <td>
+                    <button 
+                        type="button" 
+                        pButton 
+                        pRipple 
+                        icon="pi pi-trash" 
+                        class="p-button-danger"
+                        (click)="deleteRestaurant()">
+                    </button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>   
+</div>

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LEARNING-.NET-API-ANGULAR")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68f885d73a45a473c4ca98a07ca6d8e3aa3916be")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea64aabd3c4058f4b0ae74e62ec5ce0b96a24d9a")]
 [assembly: System.Reflection.AssemblyProductAttribute("LEARNING-.NET-API-ANGULAR")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LEARNING-.NET-API-ANGULAR")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
