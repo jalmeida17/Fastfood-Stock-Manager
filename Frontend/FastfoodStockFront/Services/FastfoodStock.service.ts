@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FastfoodStock } from '../Models/FastfoodStock';
   
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class FastfoodStockService {
   constructor(private httpClient: HttpClient) { }
   
   getAll(){
-    return this.httpClient.get(this.url);
+    return this.httpClient.get<FastfoodStock[]>(this.url);
   }
 
   getById(id: number) {
