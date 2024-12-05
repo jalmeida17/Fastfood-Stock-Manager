@@ -3,6 +3,7 @@ import { TableModule } from 'primeng/table';
 import { IconFieldModule } from 'primeng/iconfield';
 import { FastfoodStock } from '../../../Models/FastfoodStock';
 import { ButtonModule } from 'primeng/button';
+import { FastfoodStockService } from '../../../Services/FastfoodStock.service';
 
 @Component({
   selector: 'app-stock-table',
@@ -54,16 +55,17 @@ export class StockTableComponent  {
     }
   ];
 
-  restockRestaurant() {
-    console.log("Restocking restaurant");
-  }
-
-  editRestaurant() {
-    console.log("Editing restaurant");
-  }
-
-  deleteRestaurant() {
-    console.log("Deleting restaurant");
-  }
+  fastfoods:any;
+  
+    constructor(private fastfoodstockService:FastfoodStockService) {}
+  
+    ngOnInit() {
+  
+      this.fastfoodstockService.getAll()
+        .subscribe(response => {
+          this.fastfoods = response;
+          console.log(response)
+        });
+      }
   
 }

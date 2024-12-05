@@ -69,4 +69,6 @@ public class FastfoodStockController : ControllerBase
 
         return NoContent();
     }
+
+
 }
