@@ -1,4 +1,5 @@
 using ContosoPizza.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LEARNING_.NET_API_ANGULAR.Controllers;
@@ -17,19 +18,27 @@ public class FastfoodStockController : ControllerBase
    
     // GET all action
     [HttpGet]
-    public ActionResult<List<FastfoodStock>> GetAll() =>
-        FastfoodStockService.GetAll();
+    public ActionResult<FastfoodStock[]> GetAll()
+    {
+        var stocks = FastfoodStockService.GetAll();
+        if (stocks == null || stocks.Count == 0)
+        {
+            return NotFound("Aucun stock trouvé.");
+        }
+        return Ok(stocks);
+    }
+       
 
     // GET by Id action
     [HttpGet("{id}")]
     public ActionResult<FastfoodStock> Get(int id)
     {
-        var fastfoodStock = FastfoodStockService.Get(id);
-
-        if(fastfoodStock == null)
-            return NotFound();
-
-        return fastfoodStock;
+        var stocks = FastfoodStockService.Get(id);
+        if (stocks == null || id <= 0)
+        {
+            return NotFound("Aucun stock trouvé.");
+        }
+        return Ok(stocks);
     }
 
     // POST action
@@ -41,34 +50,32 @@ public class FastfoodStockController : ControllerBase
     }
 
     // PUT action
-    [HttpPut("{id}")]
-    public IActionResult Update(int id, FastfoodStock fastfoodStock)
+    [HttpPut]
+    public IActionResult Update(FastfoodStock fastfoodStock)
     {
-        if (id != fastfoodStock.Id)
-            return BadRequest();
-
-        var existingFastfoodStock = FastfoodStockService.Get(id);
-        if (existingFastfoodStock is null)
-            return NotFound();
-
+        var stocks = FastfoodStockService.Get(fastfoodStock.Id);
+        if (stocks == null || fastfoodStock.Id <= 0)
+        {
+            return NotFound("Aucun stock trouvé.");
+        }
         FastfoodStockService.Update(fastfoodStock);
-
-        return NoContent();
+        var response = "Changement du stock N*" + stocks.Id;
+        return Ok(stocks);
     }
 
     // DELETE action
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
-        var fastfoodStock = FastfoodStockService.Get(id);
-
-        if (fastfoodStock is null)
-            return NotFound();
-
+        var stocks = FastfoodStockService.Get(id);
+        if (stocks == null || id <= 0)
+        {
+            return NotFound("Aucun stock trouvé.");
+        }
         FastfoodStockService.Delete(id);
+        var response = "Supression de stock N*" + stocks.Id;
+        return Ok(response);
 
-        return NoContent();
     }
-
 
 }
