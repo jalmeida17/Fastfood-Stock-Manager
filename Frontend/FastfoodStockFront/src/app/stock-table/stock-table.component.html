@@ -1,29 +1,45 @@
-<div class="col-8 p-fluid restaurantsDiv" style="height:100%;">
+<div class="col-13 p-fluid" style="height:100%;">
     <p-table [value]="restaurants" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Location</th>
-                <th>Bread</th>
-                <th>Cheese</th>
-                <th>Meat</th>
-                <th>Potato</th>
-                <th>Water</th>
-                <th>Coke</th>
+                <th>Last Restock</th>
+                <th>Bread (KG)</th>
+                <th>Cheese (KG)</th>
+                <th>Meat (KG)</th>
+                <th>Lettuce (KG)</th>
+                <th>Tomato (KG)</th>
+                <th>Onion (KG)</th>
+                <th>Pickle (KG)</th>
+                <th>Ketchup (L)</th>
+                <th>Mustard (L)</th>
+                <th>Mayo (L)</th>
+                <th>Potato (KG)</th>
+                <th>Water (L)</th>
+                <th>Coke (L)</th>
                 <th style="width: 5rem">Restock</th>
                 <th style="width: 5rem">Edit</th>
                 <th style="width: 5rem">Delete</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-stock>
+        <ng-template pTemplate="body"let-stock>
             <tr>
                 <td>{{ stock.id }}</td>
                 <td>{{ stock.name }}</td>
                 <td>{{ stock.location }}</td>
+                <td>{{ stock.lastRestock | date: 'dd-MM-yyyy' }}</td>
                 <td>{{ stock.bread }}</td>
                 <td>{{ stock.cheese }}</td>
                 <td>{{ stock.meat }}</td>
+                <td>{{ stock.lettuce }}</td>
+                <td>{{ stock.tomato }}</td>
+                <td>{{ stock.onion }}</td>
+                <td>{{ stock.pickle }}</td>
+                <td>{{ stock.ketchup }}</td>
+                <td>{{ stock.mustard }}</td>
+                <td>{{ stock.mayonnaise }}</td>
                 <td>{{ stock.potato }}</td>
                 <td>{{ stock.water }}</td>
                 <td>{{ stock.coke }}</td>
@@ -34,7 +50,7 @@
                         pRipple 
                         icon="pi pi-sync" 
                         class="p-button-success"
-                        (click)="restockRestaurant()">
+                        >
                     </button>
                 </td>
                 <td>
@@ -44,7 +60,7 @@
                         pRipple 
                         icon="pi pi-pencil" 
                         class="p-button-primary"
-                        (click)="editRestaurant()">
+                        >
                     </button>
                 </td>
                 <td>
@@ -54,7 +70,7 @@
                         pRipple 
                         icon="pi pi-trash" 
                         class="p-button-danger"
-                        (click)="deleteRestaurant()">
+                        >
                     </button>
                 </td>
             </tr>

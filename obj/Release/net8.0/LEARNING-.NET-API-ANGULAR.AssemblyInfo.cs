@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LEARNING-.NET-API-ANGULAR")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49ecbcc70efae7693b3fde8590485b11cef8357f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5312574aa72f68e78c9e47f8ce4e268169ed297c")]
 [assembly: System.Reflection.AssemblyProductAttribute("LEARNING-.NET-API-ANGULAR")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LEARNING-.NET-API-ANGULAR")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

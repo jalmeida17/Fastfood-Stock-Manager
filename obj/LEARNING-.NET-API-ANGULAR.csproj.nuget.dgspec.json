@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Dev\\LEARNING-.NET-API-ANGULAR\\LEARNING-.NET-API-ANGULAR.csproj": {}
+    "C:\\Dev\\Fastfood-Stock-Manager\\LEARNING-.NET-API-ANGULAR.csproj": {}
   },
   "projects": {
-    "C:\\Dev\\LEARNING-.NET-API-ANGULAR\\LEARNING-.NET-API-ANGULAR.csproj": {
+    "C:\\Dev\\Fastfood-Stock-Manager\\LEARNING-.NET-API-ANGULAR.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Dev\\LEARNING-.NET-API-ANGULAR\\LEARNING-.NET-API-ANGULAR.csproj",
+        "projectUniqueName": "C:\\Dev\\Fastfood-Stock-Manager\\LEARNING-.NET-API-ANGULAR.csproj",
         "projectName": "LEARNING-.NET-API-ANGULAR",
-        "projectPath": "C:\\Dev\\LEARNING-.NET-API-ANGULAR\\LEARNING-.NET-API-ANGULAR.csproj",
+        "projectPath": "C:\\Dev\\Fastfood-Stock-Manager\\LEARNING-.NET-API-ANGULAR.csproj",
         "packagesPath": "C:\\Users\\jalmeidasantos\\.nuget\\packages\\",
-        "outputPath": "C:\\Dev\\LEARNING-.NET-API-ANGULAR\\obj\\",
+        "outputPath": "C:\\Dev\\Fastfood-Stock-Manager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jalmeidasantos\\AppData\\Roaming\\NuGet\\NuGet.Config",
