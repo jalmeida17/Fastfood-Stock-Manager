@@ -26,6 +26,23 @@ export class StockTableComponent  {
           this.restaurants = response;
           console.log(response)
         });
+        
+      } 
+
+      restock(FastfoodStock: FastfoodStock){
+        console.log(`Restocking ${FastfoodStock.name}`)
+      }
+
+      edit(FastfoodStock: FastfoodStock){
+        console.log(`Editing ${FastfoodStock.name}`)
+      }
+
+      delete(FastfoodStock: FastfoodStock){
+        this.fastfoodstockService.remove(FastfoodStock.id)
+          .subscribe(() => {
+            this.restaurants = this.restaurants.filter(stock => stock.id !== FastfoodStock.id);
+            console.log(`Deleted stock with id ${FastfoodStock.id}`);
+          });
       }
   
 }

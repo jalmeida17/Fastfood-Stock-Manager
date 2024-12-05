@@ -50,6 +50,7 @@
                         pRipple 
                         icon="pi pi-sync" 
                         class="p-button-success"
+                        (click)="restock(stock)"
                         >
                     </button>
                 </td>
@@ -60,6 +61,7 @@
                         pRipple 
                         icon="pi pi-pencil" 
                         class="p-button-primary"
+                        (click)="edit(stock)"
                         >
                     </button>
                 </td>
@@ -70,6 +72,7 @@
                         pRipple 
                         icon="pi pi-trash" 
                         class="p-button-danger"
+                        (click)="delete(stock)"
                         >
                     </button>
                 </td>

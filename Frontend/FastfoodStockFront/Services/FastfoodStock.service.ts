@@ -25,5 +25,9 @@ export class FastfoodStockService {
   remove(id: number) {
     return this.httpClient.delete(`${this.url}/${id}`);
   }
+
+  update(post: any) {
+    return this.httpClient.put(`${this.url}/${post.id}`, post);
+  }
   
 }
