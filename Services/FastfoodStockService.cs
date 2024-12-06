@@ -5,7 +5,7 @@ namespace ContosoPizza.Services;
 public static class FastfoodStockService
 {
     static List<FastfoodStock> Restaurants { get; }
-    static int nextId = 3;
+    static int nextId = 6;
     static FastfoodStockService()
     {
         Restaurants = new List<FastfoodStock>
@@ -117,9 +117,14 @@ public static class FastfoodStockService
 
     public static FastfoodStock? Get(int id) => Restaurants.FirstOrDefault(p => p.Id == id);
 
+    public static int GetCokeSum() => Restaurants.Sum(c => c.Coke);
+
     public static void Add(FastfoodStock fastfoodStock)
     {
-        fastfoodStock.Id = nextId++;
+        if (fastfoodStock.Id == 0 || Restaurants.Any(r => r.Id == fastfoodStock.Id))
+        {
+            fastfoodStock.Id = nextId++;
+        }
         Restaurants.Add(fastfoodStock);
     }
 
