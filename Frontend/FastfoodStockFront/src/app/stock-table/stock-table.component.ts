@@ -26,12 +26,29 @@ export class StockTableComponent  {
           this.restaurants = response;
           console.log(response)
         });
-        
       } 
 
       restock(FastfoodStock: FastfoodStock){
-        console.log(`Restocking ${FastfoodStock.name}`)
-      }
+        FastfoodStock.bread += 20; 
+        FastfoodStock.cheese += 15; 
+        FastfoodStock.meat += 30; 
+        FastfoodStock.lettuce += 10; 
+        FastfoodStock.tomato += 10; 
+        FastfoodStock.onion += 8; 
+        FastfoodStock.pickle += 5; 
+        FastfoodStock.ketchup += 20; 
+        FastfoodStock.mustard += 15; 
+        FastfoodStock.mayonnaise += 15; 
+        FastfoodStock.potato += 50;
+        FastfoodStock.water += 100; 
+        FastfoodStock.coke += 80;  
+        FastfoodStock.lastRestock = new Date();
+
+        this.fastfoodstockService.update(FastfoodStock)
+          .subscribe(() => {
+            console.log(`Restocked ${FastfoodStock.name}`);
+          });
+    }
 
       edit(FastfoodStock: FastfoodStock){
         console.log(`Editing ${FastfoodStock.name}`)

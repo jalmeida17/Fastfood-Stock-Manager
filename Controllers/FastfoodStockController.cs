@@ -50,18 +50,25 @@ public class FastfoodStockController : ControllerBase
     }
 
     // PUT action
-    [HttpPut]
-    public IActionResult Update(FastfoodStock fastfoodStock)
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, [FromBody] FastfoodStock fastfoodStock)
     {
-        var stocks = FastfoodStockService.Get(fastfoodStock.Id);
-        if (stocks == null || fastfoodStock.Id <= 0)
+        if (fastfoodStock == null || fastfoodStock.Id != id || id <= 0)
+        {
+            return BadRequest("Invalid request data.");
+        }
+
+        var stocks = FastfoodStockService.Get(id);
+        if (stocks == null)
         {
             return NotFound("Aucun stock trouvé.");
         }
+
         FastfoodStockService.Update(fastfoodStock);
 
-        return Ok(stocks);
+        return Ok(fastfoodStock);
     }
+
 
     // DELETE action
     [HttpDelete("{id}")]
@@ -73,8 +80,7 @@ public class FastfoodStockController : ControllerBase
             return NotFound("Aucun stock trouvé.");
         }
         FastfoodStockService.Delete(id);
-        var response = "Supression de stock N*" + stocks.Id;
-        return Ok(response);
+        return Ok(stocks);
 
     }
 
@@ -94,7 +100,7 @@ public class FastfoodStockController : ControllerBase
         {
             FastfoodStockService.Update(fastfoodStock);
         }
-        return Ok();
+        return Ok(stocks);
     }
 
     [HttpGet("get-coke-sum")]
@@ -105,8 +111,7 @@ public class FastfoodStockController : ControllerBase
         {
             return NotFound("Aucun coca-cola trouvé.");
         }
-        var response = "Getting total nb of cokes : " + stocks;
-        return Ok(response);
+        return Ok(stocks);
     } 
 
 

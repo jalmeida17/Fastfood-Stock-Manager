@@ -18,16 +18,18 @@ export class FastfoodStockService {
     return this.httpClient.get(`${this.url}/${id}`);
   }
 
-  add(post: any) {
-    return this.httpClient.post(this.url, post);
+  add(fastfoodStock: FastfoodStock) {
+    return this.httpClient.post(this.url, fastfoodStock);
   }
 
   remove(id: number) {
     return this.httpClient.delete(`${this.url}/${id}`);
   }
 
-  update(post: any) {
-    return this.httpClient.put(`${this.url}/${post.id}`, post);
-  }
+  update(fastfoodStock: FastfoodStock) {
+    return this.httpClient.put(`${this.url}/${fastfoodStock.id}`, fastfoodStock);
+}
+
+  
   
 }
