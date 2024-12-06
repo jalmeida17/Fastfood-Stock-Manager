@@ -15,9 +15,9 @@ public class FastfoodStockController : ControllerBase
         _logger = logger;
     }
 
-   
+
     // GET all action
-    [HttpGet]
+    [HttpGet("get-all")]
     public ActionResult<FastfoodStock[]> GetAll()
     {
         var stocks = FastfoodStockService.GetAll();
@@ -27,10 +27,10 @@ public class FastfoodStockController : ControllerBase
         }
         return Ok(stocks);
     }
-       
+
 
     // GET by Id action
-    [HttpGet("{id}")]
+    [HttpGet("get-by-{id}")]
     public ActionResult<FastfoodStock> Get(int id)
     {
         var stocks = FastfoodStockService.Get(id);
@@ -42,15 +42,15 @@ public class FastfoodStockController : ControllerBase
     }
 
     // POST action
-    [HttpPost]
-    public IActionResult Create(FastfoodStock fastfoodStock)
+    [HttpPost("create")]
+    public ActionResult<FastfoodStock> Create(FastfoodStock fastfoodStock)
     {
         FastfoodStockService.Add(fastfoodStock);
         return CreatedAtAction(nameof(Get), new { id = fastfoodStock.Id }, fastfoodStock);
     }
 
     // PUT action
-    [HttpPut]
+    [HttpPut("update")]
     public IActionResult Update(FastfoodStock fastfoodStock)
     {
         var stocks = FastfoodStockService.Get(fastfoodStock.Id);
@@ -59,12 +59,12 @@ public class FastfoodStockController : ControllerBase
             return NotFound("Aucun stock trouvé.");
         }
         FastfoodStockService.Update(fastfoodStock);
-        var response = "Changement du stock N*" + stocks.Id;
+
         return Ok(stocks);
     }
 
     // DELETE action
-    [HttpDelete("{id}")]
+    [HttpDelete("delete-by-{id}")]
     public IActionResult Delete(int id)
     {
         var stocks = FastfoodStockService.Get(id);
@@ -77,5 +77,38 @@ public class FastfoodStockController : ControllerBase
         return Ok(response);
 
     }
+
+    // Requêtes de Yoann
+    [HttpPut("create-or-update")]
+    public IActionResult CreateOrUpdate(FastfoodStock fastfoodStock)
+    {
+        var existingStock = FastfoodStockService.Get(fastfoodStock.Id);
+
+
+        var stocks = FastfoodStockService.Get(fastfoodStock.Id);
+        if (existingStock == null)
+        {
+            FastfoodStockService.Add(fastfoodStock);
+        }
+        else
+        {
+            FastfoodStockService.Update(fastfoodStock);
+        }
+        return Ok();
+    }
+
+    [HttpGet("get-coke-sum")]
+    public ActionResult<int> GetCokeSum()
+    {
+        var stocks = FastfoodStockService.GetCokeSum();
+        if (stocks == 0)
+        {
+            return NotFound("Aucun coca-cola trouvé.");
+        }
+        var response = "Getting total nb of cokes : " + stocks;
+        return Ok(response);
+    } 
+
+
 
 }
