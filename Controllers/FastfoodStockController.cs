@@ -17,7 +17,7 @@ public class FastfoodStockController : ControllerBase
 
 
     // GET all action
-    [HttpGet("get-all")]
+    [HttpGet]
     public ActionResult<FastfoodStock[]> GetAll()
     {
         var stocks = FastfoodStockService.GetAll();
@@ -30,7 +30,7 @@ public class FastfoodStockController : ControllerBase
 
 
     // GET by Id action
-    [HttpGet("get-by-{id}")]
+    [HttpGet("{id}")]
     public ActionResult<FastfoodStock> Get(int id)
     {
         var stocks = FastfoodStockService.Get(id);
@@ -42,7 +42,7 @@ public class FastfoodStockController : ControllerBase
     }
 
     // POST action
-    [HttpPost("create")]
+    [HttpPost]
     public ActionResult<FastfoodStock> Create(FastfoodStock fastfoodStock)
     {
         FastfoodStockService.Add(fastfoodStock);
@@ -50,7 +50,7 @@ public class FastfoodStockController : ControllerBase
     }
 
     // PUT action
-    [HttpPut("update")]
+    [HttpPut]
     public IActionResult Update(FastfoodStock fastfoodStock)
     {
         var stocks = FastfoodStockService.Get(fastfoodStock.Id);
@@ -64,7 +64,7 @@ public class FastfoodStockController : ControllerBase
     }
 
     // DELETE action
-    [HttpDelete("delete-by-{id}")]
+    [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
         var stocks = FastfoodStockService.Get(id);
