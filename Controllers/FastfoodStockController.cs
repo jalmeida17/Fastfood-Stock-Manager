@@ -28,11 +28,11 @@ public class FastfoodStockController : ControllerBase
         return Ok(stocks);
     }
 
-
+   
     // GET by Id action
     [HttpGet("{id}")]
     public ActionResult<FastfoodStock> Get(int id)
-    {
+    { 
         var stocks = FastfoodStockService.Get(id);
         if (stocks == null || id <= 0)
         {

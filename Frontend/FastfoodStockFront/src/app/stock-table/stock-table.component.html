@@ -1,48 +1,53 @@
-<div class="col-13 p-fluid" style="height:100%;">
-    <p-table [value]="restaurants" [tableStyle]="{ 'min-width': '50rem' }">
+<p-toast/>
+<p-confirmPopup/>
+<div class="col-12 p-fluid" style="height:100%;">
+    <p-table [value]="restaurants" [tableStyle]="{ 'min-width': '50rem' }" styleClass="p-datatable-gridlines" [scrollable]="true" 
+    scrollHeight="950px" 
+    [virtualScroll]="true"
+    [virtualScrollItemSize]="46" >
         <ng-template pTemplate="header">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Location</th>
                 <th>Last Restock</th>
-                <th>Bread (KG)</th>
-                <th>Cheese (KG)</th>
-                <th>Meat (KG)</th>
-                <th>Lettuce (KG)</th>
-                <th>Tomato (KG)</th>
-                <th>Onion (KG)</th>
-                <th>Pickle (KG)</th>
-                <th>Ketchup (L)</th>
-                <th>Mustard (L)</th>
-                <th>Mayo (L)</th>
-                <th>Potato (KG)</th>
-                <th>Water (L)</th>
-                <th>Coke (L)</th>
+                <th>Bread</th>
+                <th>Cheese</th>
+                <th>Meat</th>
+                <th>Lettuce</th>
+                <th>Tomato</th>
+                <th>Onion</th>
+                <th>Pickle</th>
+                <th>Ketchup</th>
+                <th>Mustard</th>
+                <th>Mayo</th>
+                <th>Potato</th>
+                <th>Water</th>
+                <th>Coke</th>
                 <th style="width: 5rem">Restock</th>
                 <th style="width: 5rem">Edit</th>
                 <th style="width: 5rem">Delete</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body"let-stock>
+        <ng-template pTemplate="body" let-stock let-ri="rowIndex">
             <tr>
                 <td>{{ stock.id }}</td>
                 <td>{{ stock.name }}</td>
                 <td>{{ stock.location }}</td>
-                <td>{{ stock.lastRestock | date: 'dd-MM-yyyy hh:mm:ss' }}</td>
-                <td>{{ stock.bread }}</td>
-                <td>{{ stock.cheese }}</td>
-                <td>{{ stock.meat }}</td>
-                <td>{{ stock.lettuce }}</td>
-                <td>{{ stock.tomato }}</td>
-                <td>{{ stock.onion }}</td>
-                <td>{{ stock.pickle }}</td>
-                <td>{{ stock.ketchup }}</td>
-                <td>{{ stock.mustard }}</td>
-                <td>{{ stock.mayonnaise }}</td>
-                <td>{{ stock.potato }}</td>
-                <td>{{ stock.water }}</td>
-                <td>{{ stock.coke }}</td>
+                <td>{{ stock.lastRestock | date: 'dd/MM hh:mm:ss' }}</td>
+                <td>{{ stock.bread }} KG</td>
+                <td>{{ stock.cheese }} KG</td>
+                <td>{{ stock.meat }} KG</td>
+                <td>{{ stock.lettuce }} KG</td>
+                <td>{{ stock.tomato }} KG</td>
+                <td>{{ stock.onion }} KG</td>
+                <td>{{ stock.pickle }} KG</td>
+                <td>{{ stock.ketchup }} L</td>
+                <td>{{ stock.mustard }} L</td>
+                <td>{{ stock.mayonnaise }} L</td>
+                <td>{{ stock.potato }} KG</td>
+                <td>{{ stock.water }} L</td>
+                <td>{{ stock.coke }} L</td>
                 <td>
                     <button 
                         type="button" 
@@ -50,7 +55,7 @@
                         pRipple 
                         icon="pi pi-sync" 
                         class="p-button-success"
-                        (click)="restock(stock)"
+                        (click)="confirmAction($event, 'restock', stock)"
                         >
                     </button>
                 </td>
@@ -61,7 +66,7 @@
                         pRipple 
                         icon="pi pi-pencil" 
                         class="p-button-primary"
-                        (click)="edit(stock)"
+                        (click)=openEditDialog(ri)
                         >
                     </button>
                 </td>
@@ -72,11 +77,31 @@
                         pRipple 
                         icon="pi pi-trash" 
                         class="p-button-danger"
-                        (click)="delete(stock)"
+                        (click)="confirmAction($event, 'delete', stock);"
                         >
                     </button>
                 </td>
             </tr>
+
+            
         </ng-template>
     </p-table>   
+</div>
+
+<div class="card flex justify-content-center">
+    <p-dialog header="Edit Restaurant" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+        <span class="p-text-secondary block mb-5">Update this restaurant's information.</span>
+        <div class="flex align-items-center gap-3 mb-3">
+            <label for="name" class="font-semibold w-6rem">Name</label>
+            <input [(ngModel)]="editedName" pInputText id="name" class="flex-auto" autocomplete="off" />
+        </div>
+        <div class="flex align-items-center gap-3 mb-5">
+            <label for="location" class="font-semibold w-6rem">Location</label>
+            <input [(ngModel)]="editedLocation" pInputText id="location" class="flex-auto" autocomplete="off" />
+        </div>
+        <div class="flex justify-content-end gap-2">
+            <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
+            <p-button label="Save" (onClick)="confirmActionEdit($event); "/>
+        </div>
+    </p-dialog>
 </div>
