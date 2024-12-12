@@ -23,9 +23,13 @@ import { FormsModule } from '@angular/forms';
 export class StockTableComponent  {
 
   
+  creatorVisible: boolean = false;
   visible: boolean = false;
   restaurants: FastfoodStock[] = [];
   selectedStock: FastfoodStock | null = null;
+
+  creatorName!: string;
+  creatorLocation!: string;
 
   editedName!: string;
   editedLocation!: string;
@@ -73,6 +77,36 @@ export class StockTableComponent  {
             this.visible = false;
           });
       }
+    }
+
+    create() {
+      const newStock: FastfoodStock = {
+        id: 0,
+        name: this.creatorName,
+        location: this.creatorLocation,
+        bread: 0,
+        cheese: 0,
+        meat: 0,
+        lettuce: 0,
+        tomato: 0,
+        onion: 0,
+        pickle: 0,
+        ketchup: 0,
+        mustard: 0,
+        mayonnaise: 0,
+        potato: 0,
+        water: 0,
+        coke: 0,
+        lastRestock: new Date(),
+      };
+  
+      this.fastfoodstockService.add(newStock)
+          .subscribe(() => {
+            console.log(`Created ${newStock.name}`);
+            this.creatorVisible = false;
+            window.location.reload()
+          });
+
     }
     
   
@@ -143,6 +177,19 @@ export class StockTableComponent  {
           accept: () => {
             this.saveEdit()
             this.messageService.add({ severity: 'info', summary: 'Updated', detail: 'Restaurant updated successfully' });
+            
+            }
+        })
+      }
+
+      confirmActionCreate(event: Event){
+        this.confirmationService.confirm({
+          target: event.target as EventTarget,
+          message: `Are you sure you want to create this restaurant?`,
+          icon: 'pi pi-exclamation-triangle',
+          accept: () => {
+            this.create()
+            this.messageService.add({ severity: 'success', summary: 'Created', detail: 'Restaurant created successfully' });
             
             }
         })

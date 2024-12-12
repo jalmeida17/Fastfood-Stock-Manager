@@ -80,7 +80,7 @@ public class FastfoodStockController : ControllerBase
             return NotFound("Aucun stock trouvé.");
         }
         FastfoodStockService.Delete(id);
-        return Ok(stocks);
+        return Ok(stocks.Id);
 
     }
 
@@ -94,7 +94,7 @@ public class FastfoodStockController : ControllerBase
         var stocks = FastfoodStockService.Get(fastfoodStock.Id);
         if (existingStock == null)
         {
-            FastfoodStockService.Add(fastfoodStock);
+            Create(fastfoodStock);
         }
         else
         {
