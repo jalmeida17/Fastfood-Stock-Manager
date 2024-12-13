@@ -106,20 +106,20 @@
     </p-dialog>
 </div>
 
-<div class="card flex justify-content-center">
+<div class="" style="margin-left: 0.5rem;">
     <p-button (click)="creatorVisible = true" label="Create" />
     <p-dialog header="Create Restaurant" [modal]="true" [(visible)]="creatorVisible" [style]="{ width: '25rem' }">
         <span class="p-text-secondary block mb-5">Insert the new Restaurant's name and location.</span>
         <div class="flex align-items-center gap-3 mb-3">
             <label for="namecreate" class="font-semibold w-6rem">Name</label>
-            <input required="true" [(ngModel)]="creatorName" pInputText id="namecreate" class="flex-auto" autocomplete="off" />
+            <input [(ngModel)]="creatorName" pInputText id="namecreate" class="flex-auto" autocomplete="off" />
         </div>
         <div class="flex align-items-center gap-3 mb-5">
             <label for="locationcreate" class="font-semibold w-6rem">Location</label>
-            <input required="true" [(ngModel)]="creatorLocation" pInputText id="locationcreate" class="flex-auto" autocomplete="off" />
+            <input [(ngModel)]="creatorLocation" pInputText id="locationcreate" class="flex-auto" autocomplete="off" />
         </div>
         <div class="flex justify-content-end gap-2">
-            <p-button label="Cancel" severity="secondary" (onClick)="creatorVisible = false" />
+            <p-button label="Cancel" severity="secondary" (onClick)="creatorVisible = false; creatorName= ''; creatorLocation = '' " />
             <p-button label="Save" (onClick)=" confirmActionCreate($event)"/>
         </div>
     </p-dialog>

@@ -188,9 +188,14 @@ export class StockTableComponent  {
           message: `Are you sure you want to create this restaurant?`,
           icon: 'pi pi-exclamation-triangle',
           accept: () => {
-            this.create()
-            this.messageService.add({ severity: 'success', summary: 'Created', detail: 'Restaurant created successfully' });
-            
+            if(this.creatorName === "" || this.creatorLocation === ""){
+              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please fill in all fields' });
+            } else {
+              this.create()
+              this.messageService.add({ severity: 'success', summary: 'Created', detail: 'Restaurant created successfully' });
+              this.creatorLocation = "";
+              this.creatorName = "";
+            }
             }
         })
       }
