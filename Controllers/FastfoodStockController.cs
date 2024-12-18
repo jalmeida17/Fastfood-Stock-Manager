@@ -1,4 +1,5 @@
 using ContosoPizza.Services;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -51,7 +52,7 @@ public class FastfoodStockController : ControllerBase
 
     // PUT action
     [HttpPut("{id}")]
-    public IActionResult Update(int id, [FromBody] FastfoodStock fastfoodStock)
+    public IActionResult Update(int id, FastfoodStock fastfoodStock)
     {
         if (fastfoodStock == null || fastfoodStock.Id != id || id <= 0)
         {
@@ -88,19 +89,8 @@ public class FastfoodStockController : ControllerBase
     [HttpPut("create-or-update")]
     public IActionResult CreateOrUpdate(FastfoodStock fastfoodStock)
     {
-        var existingStock = FastfoodStockService.Get(fastfoodStock.Id);
-
-
-        var stocks = FastfoodStockService.Get(fastfoodStock.Id);
-        if (existingStock == null)
-        {
-            Create(fastfoodStock);
-        }
-        else
-        {
-            FastfoodStockService.Update(fastfoodStock);
-        }
-        return Ok(stocks);
+        var stock = FastfoodStockService.CreateOrUpdate(fastfoodStock);
+        return Ok(stock);
     }
 
     [HttpGet("get-coke-sum")]

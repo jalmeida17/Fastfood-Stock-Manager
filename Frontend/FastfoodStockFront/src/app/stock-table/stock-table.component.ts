@@ -12,11 +12,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { FormsModule } from '@angular/forms';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-stock-table',
   standalone: true,
-  imports: [TableModule, IconFieldModule, ButtonModule, CommonModule, DialogModule, InputTextModule, ToastModule, ConfirmPopupModule, FormsModule],
+  imports: [TableModule, IconFieldModule, ButtonModule, CommonModule, DialogModule, InputTextModule, ToastModule, ConfirmPopupModule, FormsModule, CardModule],
   templateUrl: './stock-table.component.html',
   styleUrl: './stock-table.component.scss',
 })
