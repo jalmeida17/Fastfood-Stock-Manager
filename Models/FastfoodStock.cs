@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace LEARNING_.NET_API_ANGULAR;
 
 public class FastfoodStock
 {
+    [Key]
     public int Id { get; set; }
     public required string Name { get; set; }
     public required string Location { get; set; }
