@@ -14,32 +14,23 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularApp", policy =>
     {
-        policy.WithOrigins("http://localhost:4200") // Replace with the Angular app's origin
+        policy.WithOrigins("http://localhost:4200")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
 });
 
 // Injection de la de DBContext
-
-// Récupère la chaîne de connexion depuis appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("MariaDbConnection");
 
-// Configure le DbContext avec la chaîne de connexion
 builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-// Ajoute les autres services
 builder.Services.AddControllers();
-
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var context = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
-    FastfoodStockData.Initialize(context);
-}
+FastfoodStockData.Initialize(app.Services);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
